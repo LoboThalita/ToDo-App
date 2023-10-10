@@ -1,41 +1,70 @@
+import { useEffect,useState } from "react";
 import styles from "./App.module.css";
+import NewTaskCreator from "./Components/NewTaskCreator";
+import ExistingTasks from "./Components/ExistingTasks";
 
 const BASE_URL = "http://localhost:3333/tasks";
 
-/**
- * Renders the whole application.
- * Lists all tasks and allows the user to create new ones.
- * @returns {JSX.Element}
- */
 function App() {
-  const tasks = [];
-  const doneTasks = []; // TODO: Filter the tasks that are done if needed
+  const [tasks, setTasks] = useState([]);
+  const doneTasks = tasks.filter((tasks) => tasks.purchased)
 
-  function handleSubmit() {
-    // TODO: Handle the form submission
-    // Creates a new task in the database
-    // Updates the list of tasks
+  useEffect(() => {
+    fetch("http://localhost:3333/tasks")
+      .then((res) => res.json())
+      .then((data) => setTasks(data));
+  }, []);
+
+  async function handleSubmit(formData) {
+    const res = await fetch("http://localhost:3333/tasks", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({ ...formData, purchased: false }),
+    });
+    const data = await res.json();
+
+    setTasks([...tasks, data]);
   }
 
-  function handleCheckChange() {
-    // TODO: Handle the checkbox change
-    // Updates the `done` field of a task in the database
-    // Updates the list of tasks
+  async function handleCheckedChange(id, checked) {
+    await fetch("http://localhost:3333/tasks/" + id, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "PATCH",
+      body: JSON.stringify({ purchased: checked }),
+    });
+
+    const newTasks = tasks.map((task) =>
+    task.id === id ? { ...task, purchased: checked } : task
+    );
+    setTasks(newTasks);
   }
 
-  function handleDelete() {
-    // TODO: Handle the delete button click of a task
-    // Deletes a task from the database
-    // Updates the list of tasks
+  async function handleDelete(id) {
+    await fetch("http://localhost:3333/tasks/" + id, {
+      method: "DELETE",
+    });
+    const newTasks = tasks.filter((task) => task.id !== id);
+    setTasks(newTasks);
   }
 
   return (
     <div>
       <h1>Minhas tarefas</h1>
 
+      <NewTaskCreator />
       <ul>
-        <li>Tarefa 1</li>
-        <li>Tarefa 2</li>
+      {tasks.map((task) => (
+            <ExistingTasks
+              key={task.id}
+              task={task}
+              onDelete={handleDelete}
+              onCheckedChange={handleCheckedChange}
+            />
+          ))}
       </ul>
     </div>
   );
