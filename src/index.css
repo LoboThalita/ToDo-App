@@ -30,9 +30,9 @@ button {
 }
 
 body {
-  /** TODO: Change the default font-family */
-  /** TODO: Change the default background color */
-  /** TODO: Change the default text color */
+  font-family: "Inter", sans-serif;
+  background: var(--gray-950);
+  color: var(--gray-50);
 }
 
 input[type="checkbox"] {
