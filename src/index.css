@@ -31,10 +31,16 @@ button {
 
 body {
   font-family: "Inter", sans-serif;
-  background: var(--gray-950);
+  background: #030712;
   color: var(--gray-50);
+  font-size: 0.875rem;
 }
 
 input[type="checkbox"] {
   /** TODO: Change the default checkbox input */
+}
+
+:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--blue-500) inset;
 }

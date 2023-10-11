@@ -1,4 +1,5 @@
 import { useRef,useState } from "react";
+import styles from "../ModulesCss/NewTaskCreator.module.css";
 
 function NewTaskCreator({ onSubmit }) {
   const inputRef = useRef(null);
@@ -17,9 +18,11 @@ function NewTaskCreator({ onSubmit }) {
     inputRef.current?.focus();
   }
   return (
-    <form onSubmit={(event) => handleSubmit(event)}>
+    <form onSubmit={(event) => handleSubmit(event)}
+    className={styles.form}>
       <div>
         <input
+          className={styles.input}
           type="text"
           ref={inputRef}
           id="description"
@@ -32,9 +35,10 @@ function NewTaskCreator({ onSubmit }) {
       </div>
       <button
         type="submit"
-        // className={styles.submitButton}
+        className={styles.button}
         aria-label="Criar tarefa"
       >
+        Criar tarefa
       </button>
     </form>
   );
