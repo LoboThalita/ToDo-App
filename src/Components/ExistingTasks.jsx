@@ -7,9 +7,9 @@ function ExistingTasks({ task, onDelete, onCheckedChange }) {
   return (
     
     <li>
-      <input type="checkbox" checked={task.purchased} onChange={handleChange} />
+      <input type="checkbox" checked={task.completed} onChange={handleChange} />
       <p>{task.description}</p>
-      <button onClick={() => onDelete(item.id)}>
+      <button onClick={() => onDelete(task.id)}>
         <Trash2 size={16} />
       </button>
     </li>

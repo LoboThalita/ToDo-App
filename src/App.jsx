@@ -7,7 +7,7 @@ const BASE_URL = "http://localhost:3333/tasks";
 
 function App() {
   const [tasks, setTasks] = useState([]);
-  const doneTasks = tasks.filter((tasks) => tasks.purchased)
+  const doneTasks = tasks.filter((tasks) => tasks.completed)
 
   useEffect(() => {
     fetch("http://localhost:3333/tasks")
@@ -21,7 +21,7 @@ function App() {
         "Content-Type": "application/json",
       },
       method: "POST",
-      body: JSON.stringify({ ...formData, purchased: false }),
+      body: JSON.stringify({ ...formData, completed: false }),
     });
     const data = await res.json();
 
@@ -34,11 +34,11 @@ function App() {
         "Content-Type": "application/json",
       },
       method: "PATCH",
-      body: JSON.stringify({ purchased: checked }),
+      body: JSON.stringify({ completed: checked }),
     });
 
     const newTasks = tasks.map((task) =>
-    task.id === id ? { ...task, purchased: checked } : task
+    task.id === id ? { ...task, completed: checked } : task
     );
     setTasks(newTasks);
   }
@@ -55,7 +55,7 @@ function App() {
     <div>
       <h1>Minhas tarefas</h1>
 
-      <NewTaskCreator />
+      <NewTaskCreator onSubmit={handleSubmit}/>
       <ul>
       {tasks.map((task) => (
             <ExistingTasks
