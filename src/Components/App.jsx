@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import styles from "./ModulesCss/App.module.css";
-import NewTaskCreator from "./Components/NewTaskCreator";
-import ExistingTasks from "./Components/ExistingTasks";
-import Filter from "./Components/Filter";
+import styles from "../ModulesCss/App.module.css";
+import NewTaskCreator from "./NewTaskCreator";
+import ExistingTasks from "./ExistingTasks";
+import Filter from "./Filter";
 
 const BASE_URL = "http://localhost:3333/tasks";
 
@@ -51,8 +51,9 @@ function App() {
     const newTasks = tasks.filter((task) => task.id !== id);
     setTasks(newTasks);
   }
-  function handleChangeFilter(){
-
+  
+  function handleChangeFilter(checked){
+    return checked
   }
 
   return (
@@ -62,17 +63,19 @@ function App() {
       <NewTaskCreator onSubmit={handleSubmit} />
       
       {tasks.length != 0 ? <Filter tasks={tasks} onCheckedFilter={handleChangeFilter} /> : <p></p>}
+
       <ul className={styles.taskList}>
         {tasks.length === 0 ? (
-          <p>Nenhuma tarefa foi adicionada.</p>
+          <p className={styles.p}>Nenhuma tarefa foi adicionada.</p>
         ) : (
-          
           tasks.map((task) => (
+            
             <ExistingTasks
               key={task.id}
               task={task}
               onDelete={handleDelete}
               onCheckedChange={handleCheckedChange}
+              exibeAll = {false}
             />
           ))
         )}

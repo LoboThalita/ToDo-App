@@ -17,7 +17,7 @@
   font-weight: 500;
 }
 
-.taskList p{
+.p{
     color: var(--gray-400);
     font-weight: 700;
 }
