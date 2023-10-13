@@ -4,6 +4,7 @@
       "description": "terminar esse todo",
       "completed": true,
       "id": 2
+<<<<<<< HEAD
     },
     {
       "description": "Passear com o cachorro",
@@ -14,6 +15,8 @@
       "description": "Integer sed lectus ac odio pulvinar pulvinar id et metus. Aenean turpis leo, consectetur ac tincidunt et, varius a urna.",
       "completed": false,
       "id": 4
+=======
+>>>>>>> 457d0b2df6391d52f47fc0b5d7e954b9d08f8f2b
     }
   ]
 }
