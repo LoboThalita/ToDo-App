@@ -55,19 +55,27 @@ li p {
 }
 
 li button {
+  width: 1rem;
+  height: 1rem;
   border: none;
   cursor: pointer;
+  justify-content: center;
   background: transparent;
   display: flex;
   padding: 0.125rem;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.625rem;
   color: var(--gray-400);
-
 }
 
 li button:focus {
-  display: inline-flex;
-  border-radius: 0.5rem;
-  border: 2px solid var(--blue-500);
+  border-radius: 0.2rem;
+}
+
+li button:hover {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 0.375rem;
+  background: rgba(75, 85, 99, 0.5);
+  color: var(--red-500);
 }

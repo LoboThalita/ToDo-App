@@ -11,7 +11,6 @@ function App() {
   const [checked, setChecked] = useState(false);
   const tasksDisplayed = checked ? tasks.filter((task) => !task.completed) : tasks;
 
-
   useEffect(() => {
     fetch(BASE_URL)
       .then((res) => res.json())

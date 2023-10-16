@@ -36,18 +36,14 @@ body {
   font-size: 0.875rem;
 }
 
-input[type="checkbox"] {
-  /** TODO: Change the default checkbox input */
-}
-
 :focus {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--blue-500) inset;
+  outline: 2px solid var(--blue-500);
+  outline-offset: 2px;
 }
 
 
 @media (max-width: 600px) {
   html {
-    font-size: 0.875rem;
+    font-size: 0.875%;
   }
 }
