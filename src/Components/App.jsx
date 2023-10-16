@@ -9,7 +9,7 @@ const BASE_URL = "http://localhost:3333/tasks";
 function App() {
   const [tasks, setTasks] = useState([]);
   const [checked, setChecked] = useState(false);
-  const doneTasks = checked ? tasks.filter((task) => !task.completed) : tasks;
+  const tasksDisplayed = checked ? tasks.filter((task) => !task.completed) : tasks;
 
 
   useEffect(() => {
@@ -70,7 +70,7 @@ function App() {
         {tasks.length === 0 ? (
           <p className={styles.p}>Nenhuma tarefa foi adicionada.</p>
         ) : (
-          doneTasks.map((task) => (
+          tasksDisplayed.map((task) => (
             
             <ExistingTasks
               key={task.id}
