@@ -8,7 +8,9 @@ const BASE_URL = "http://localhost:3333/tasks";
 
 function App() {
   const [tasks, setTasks] = useState([]);
-  const doneTasks = tasks.filter((tasks) => tasks.completed);
+  const [checked, setChecked] = useState(false);
+  const doneTasks = checked ? tasks.filter((task) => !task.completed) : tasks;
+
 
   useEffect(() => {
     fetch(BASE_URL)
@@ -53,7 +55,7 @@ function App() {
   }
   
   function handleChangeFilter(checked){
-    return checked
+    setChecked(checked)
   }
 
   return (
@@ -68,14 +70,13 @@ function App() {
         {tasks.length === 0 ? (
           <p className={styles.p}>Nenhuma tarefa foi adicionada.</p>
         ) : (
-          tasks.map((task) => (
+          doneTasks.map((task) => (
             
             <ExistingTasks
               key={task.id}
               task={task}
               onDelete={handleDelete}
               onCheckedChange={handleCheckedChange}
-              exibeAll = {false}
             />
           ))
         )}

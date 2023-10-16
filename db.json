@@ -1,22 +1,19 @@
 {
   "tasks": [
     {
-      "description": "terminar esse todo",
-      "completed": true,
-      "id": 2
-<<<<<<< HEAD
-    },
-    {
-      "description": "Passear com o cachorro",
+      "description": "Integer sed lectus ac odio pulvinar pulvinar id et metus. Aenean turpis leo, consectetur ac tincidunt et, varius a urna.",
       "completed": false,
       "id": 3
     },
     {
-      "description": "Integer sed lectus ac odio pulvinar pulvinar id et metus. Aenean turpis leo, consectetur ac tincidunt et, varius a urna.",
-      "completed": false,
+      "description": "terminar esse desafio",
+      "completed": true,
       "id": 4
-=======
->>>>>>> 457d0b2df6391d52f47fc0b5d7e954b9d08f8f2b
+    },
+    {
+      "description": "Passear com o cachorro",
+      "completed": false,
+      "id": 5
     }
   ]
 }

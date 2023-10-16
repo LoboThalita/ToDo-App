@@ -44,3 +44,10 @@ input[type="checkbox"] {
   outline: none;
   box-shadow: 0 0 0 2px var(--blue-500) inset;
 }
+
+
+@media (max-width: 600px) {
+  html {
+    font-size: 0.875rem;
+  }
+}
