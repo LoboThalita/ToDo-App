@@ -6,6 +6,7 @@ li {
   border-radius: 0.5rem;
   border: 1px solid var(--gray-700);
   background: var(--gray-800);
+  word-wrap: break-word;
 }
 .apagado {
   display: flex;
@@ -28,6 +29,7 @@ li > input[type="checkbox"] {
   align-items: center;
   border-radius: 99999rem;
   border: 1.5px solid var(--blue-500);
+  flex-shrink: 0
 }
 li > input[type="checkbox"]:checked {
   background: var(--blue-500, #3b82f6);
@@ -42,7 +44,8 @@ li p {
   color: var(--gray-50);
   font-size: 1rem;
   font-weight: 400;
-  width: 100%;
+  max-width: 30rem;
+  text-overflow: unset;
 }
 
 .riscado {

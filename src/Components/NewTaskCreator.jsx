@@ -8,6 +8,12 @@ function NewTaskCreator({ onSubmit }) {
   async function handleSubmit(event) {
     event.preventDefault();
 
+    const trimmedDescription = description.trim();
+
+    
+    if (trimmedDescription === "") {
+      return; 
+    }
     const formData = {
         description
     }
